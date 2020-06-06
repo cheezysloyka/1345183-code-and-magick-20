@@ -45,9 +45,21 @@ window.renderStatistics = function (ctx, players, times) {
   var players = ['Вы', 'Кекс', 'Катя', 'Игорь'];
 
   for (var i = 0; i < players.length; i++) {
+    ctx.fillStyle = '#000';
     ctx.fillText(players[i], CLOUD_X + BAR_WIDTH + (BAR_WIDTH + BAR_GAP) * i, CLOUD_HEIGHT - GAP);
-    ctx.fillRect(CLOUD_X + BAR_WIDTH + (BAR_WIDTH + BAR_GAP) * i, CLOUD_HEIGHT - GAP - TEXT_HEIGHT, BAR_WIDTH, ((BAR_HEIGHT * times[i]) / maxTime) * (-1));
-    ctx.fillText(times[i], CLOUD_X + BAR_WIDTH + (BAR_WIDTH + BAR_GAP) * i, ((BAR_HEIGHT * times[i]) / maxTime) * (-1) - GAP);
+
+    if (players[i] === 'Вы') {
+      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
+      ctx.fillRect(CLOUD_X + BAR_WIDTH + (BAR_WIDTH + BAR_GAP) * i, CLOUD_HEIGHT - GAP - TEXT_HEIGHT, BAR_WIDTH, ((BAR_HEIGHT * times[i]) / maxTime) * (-1));
+    }
+    else {
+      var rand = Math.round(Math.random() * 100);
+      ctx.fillStyle = 'hsl(240, ' + rand + '%, 20%)';
+      ctx.fillRect(CLOUD_X + BAR_WIDTH + (BAR_WIDTH + BAR_GAP) * i, CLOUD_HEIGHT - GAP - TEXT_HEIGHT, BAR_WIDTH, ((BAR_HEIGHT * times[i]) / maxTime) * (-1));
+    }
+
+    ctx.fillStyle = '#000';
+    ctx.fillText(Math.round(times[i]), CLOUD_X + BAR_WIDTH + (BAR_WIDTH + BAR_GAP) * i, CLOUD_HEIGHT - 2 * TEXT_HEIGHT + ((BAR_HEIGHT * times[i]) / maxTime) * (-1));
 
   }
 };
