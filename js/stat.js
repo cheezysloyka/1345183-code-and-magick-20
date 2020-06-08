@@ -41,7 +41,7 @@ window.renderStatistics = function (ctx, players, times) {
 
   var maxTime = getMaxElement(times);
 
-  var players = ['Вы', 'Кекс', 'Катя', 'Игорь'];
+  players = ['Вы', 'Кекс', 'Катя', 'Игорь'];
 
   for (var i = 0; i < players.length; i++) {
     ctx.fillStyle = '#000';
